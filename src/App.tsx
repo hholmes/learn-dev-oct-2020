@@ -1,18 +1,31 @@
 import * as React from "react";
 import "./styles.css";
-import { Card } from "./components/Card";
+import { UserCard } from "./components/UserCard";
+import utils from "./utils";
 import faker from "faker";
 
 export default function App() {
   return (
     <div className="App">
-      {Array.from({ length: 12 }, (x, i) => i).map((i) => (
-        <Card>
-          <img src={faker.image.avatar()} alt="" />
-          <h3>{faker.name.firstName() + " " + faker.name.lastName()}</h3>
-          <p>{faker.address.city() + ", " + faker.address.state()}</p>
-        </Card>
-      ))}
+      <div>
+        <h1>People</h1>
+        {Array.from({ length: 12 }, (x, i) => i).map((i) => (
+          <UserCard
+            user={{
+              ...faker.helpers.contextualCard(),
+              cover: faker.random.arrayElement([
+                faker.image.abstract(),
+                faker.image.business(),
+                faker.image.nature(),
+                faker.image.people(),
+                faker.image.imageUrl()
+              ]),
+              title: faker.name.jobTitle(),
+              role: utils.randomRole()
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }

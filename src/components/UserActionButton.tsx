@@ -14,10 +14,5 @@ export const UserActionButton = ({
   classNames,
   callback
 }: UserActionButtonProps) => (
-  <input
-    className={btnStyles + " " + classNames}
-    onClick={callback}
-    value={title}
-    type="button"
-  />
+  <div className={btnStyles + " " + classNames}>{title}</div>
 );

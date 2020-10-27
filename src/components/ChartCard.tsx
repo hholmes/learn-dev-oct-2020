@@ -31,6 +31,11 @@ const StyledChart = styled.div<StyledChartProps>`
   animation: ${rotate}
     ${(props) =>
       props.severity >= 95 ? ".075s ease-in-out infinite alternate" : "none"};
+  @media (min-width: 1044px) {
+    & {
+      min-height: 18rem;
+    }
+  }
 `;
 
 const StyledChartTitle = styled.div`

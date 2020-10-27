@@ -1,5 +1,5 @@
 import React from "react";
-import { UserActionButton } from "./UserActionButton";
+import { UserControlsModal } from "./UserControlsModal";
 
 interface UserControlsProps {
   classNames?: string;
@@ -20,7 +20,7 @@ export const UserControls = ({ classNames, role }: UserControlsProps) => (
     >
       {role}
     </div>
-    <UserActionButton title="promote" classNames="ml-auto" />
-    <UserActionButton title="reassign" />
+    <UserControlsModal action="promote" classNames="ml-auto" />
+    <UserControlsModal action="reassign" classNames="ml-auto" />
   </div>
 );

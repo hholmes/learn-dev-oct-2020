@@ -1,9 +1,12 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { RandomChart } from "./providers/data";
+import { RandomChart } from "./data";
 import { ChartCard } from "./components/ChartCard";
 import faker from "faker";
+
+const REFRESH_INTERVAL = 10; // seconds
+const CHART_COLOR = "#9484f0";
 
 const Grid = styled.div`
   display: grid;
@@ -43,15 +46,19 @@ const OrderedGridItem = styled.div<OrderedGridItemProps>`
 
 export const Dashboard = () => {
   const [dashes, setDashes] = React.useState([
-    ...Array.from({ length: 12 }, (x, i) => i).map((i) => RandomChart())
+    ...Array.from({ length: 12 }, (x, i) => i).map((i) =>
+      RandomChart(CHART_COLOR)
+    )
   ]);
 
   React.useEffect(() => {
     const i = setInterval(() => {
       setDashes([
-        ...Array.from({ length: 12 }, (x, i) => i).map((i) => RandomChart())
+        ...Array.from({ length: 12 }, (x, i) => i).map((i) =>
+          RandomChart(CHART_COLOR)
+        )
       ]);
-    }, 5000);
+    }, REFRESH_INTERVAL * 1000);
 
     return () => {
       clearInterval(i);

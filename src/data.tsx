@@ -12,11 +12,7 @@ import {
 } from "victory";
 import faker from "faker";
 
-const theme = {
-  color: "indigo"
-};
-
-export const RandomChart = () => {
+export const RandomChart = (color: string = "lightgray") => {
   const n = faker.random.number(5) + 1;
   return faker.random.arrayElement([
     <VictoryChart domainPadding={20}>
@@ -29,13 +25,13 @@ export const RandomChart = () => {
           { x: 4, y: [n * 2, n, n / 2, n * 5].reverse() }
         ]}
         style={{
-          q1: { fill: theme.color }
+          q1: { fill: color }
         }}
       />
     </VictoryChart>,
-    <VictoryChart domain={{ x: [0, n - 1], y: [0, n + 15] }}>
+    <VictoryChart domain={{ x: [0, 5], y: [0, n + 15] }}>
       <VictoryScatter
-        style={{ data: { fill: theme.color } }}
+        style={{ data: { fill: color } }}
         size={n}
         data={[
           { x: 1, y: n },
@@ -49,7 +45,7 @@ export const RandomChart = () => {
     <VictoryChart>
       <VictoryLine
         style={{
-          data: { stroke: theme.color },
+          data: { stroke: color },
           parent: { border: "1px solid #ccc" }
         }}
         data={[
@@ -65,7 +61,7 @@ export const RandomChart = () => {
       <VictoryAxis tickFormat={(t) => `${t.getDate()}/${t.getMonth()}`} />
       <VictoryAxis dependentAxis />
       <VictoryCandlestick
-        candleColors={{ positive: "#5f5c5b", negative: theme.color }}
+        candleColors={{ positive: "#5f5c5b", negative: color }}
         data={[
           {
             x: new Date(2016, 6, 1),
@@ -111,19 +107,19 @@ export const RandomChart = () => {
         labelPlacement="vertical"
       />
       <VictoryBar
-        style={{ data: { fill: theme.color, width: 30 } }}
+        style={{ data: { fill: color, width: 30 } }}
         data={[
-          { x: 0, y: n - 3 },
+          { x: 0, y: n * 1.5 - 4 },
           { x: 45, y: n / 2 },
           { x: 90, y: n },
           { x: 135, y: n - 1 },
-          { x: 180, y: n + 2 }
+          { x: 180, y: n + 1.5 }
         ]}
       />
     </VictoryChart>,
     <VictoryChart>
       <VictoryArea
-        style={{ data: { fill: theme.color } }}
+        style={{ data: { fill: color } }}
         data={[
           { x: 1, y: n / 2, y0: 0 },
           { x: 2, y: n - 2, y0: 1 },

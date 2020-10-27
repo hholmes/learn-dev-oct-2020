@@ -42,6 +42,7 @@ const StyledChartTitle = styled.div`
   justify-content: space-between;
   span:last-of-type {
     font-weight: bold;
+    text-align: right;
   }
 `;
 

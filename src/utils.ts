@@ -1,7 +1,7 @@
 import faker from "faker";
 
 export const randomRole = () => {
-  return faker.random.arrayElement(["user", "user", "admin"]);
+  return faker.random.arrayElement(["user", "user", "user", "editor", "admin"]);
 };
 
 export default { randomRole };
